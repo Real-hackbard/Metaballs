@@ -54,7 +54,137 @@ A typical function chosen for metaballs is simply inverse distance, that is, the
 The interaction between two differently coloured 3D positive metaballs, created in Bryce.
 Note that the two smaller metaballs combine to create one larger object.
 
+# Drawing in high resolution (OpenGL):
+````pascal
+procedure glDraw();
+var
+  cx, cy, cz : Integer;
+  X, Y, Z : Integer;
+  I : Integer;
+  c : glFloat;
+begin
+  glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT);    // Clear The Screen And The Depth Buffer
+  glLoadIdentity();                                       // Reset The View
 
+  glTranslatef(0.0,0.0,-2.5);
+
+  glDisable(GL_TEXTURE_GEN_S);
+  glDisable(GL_TEXTURE_GEN_T);
+  glBindTexture(GL_TEXTURE_2D, Background);
+  glBegin(GL_QUADS);
+    glTexCoord(0, 0);   glVertex(-1.5,-1.1, 0);
+    glTexCoord(1, 0);   glVertex( 1.5,-1.1, 0);
+    glTexCoord(1, 1);   glVertex( 1.5, 1.1, 0);
+    glTexCoord(0, 1);   glVertex(-1.5, 1.1, 0);
+  glEnd();
+  glEnable(GL_TEXTURE_GEN_S);
+  glEnable(GL_TEXTURE_GEN_T);
+
+  glRotatef(ElapsedTime/30, 0, 0, 1);
+
+  c := 0.15*cos(ElapsedTime/600);
+  MetaBall[1].X :=-0.3*cos(ElapsedTime/700) - c;
+  MetaBall[1].Y :=0.3*sin(ElapsedTime/600) - c;
+
+  MetaBall[2].X :=0.4*sin(ElapsedTime/400) + c;
+  MetaBall[2].Y :=0.4*cos(ElapsedTime/400) - c;
+
+  MetaBall[3].X :=-0.4*cos(ElapsedTime/400) - 0.2*sin(ElapsedTime/600);
+  MetaBall[3].y :=0.4*sin(ElapsedTime/500) - 0.2*sin(ElapsedTime/400);
+
+  TessTriangles := 0;
+  For cx := 0 to GridSize do
+    For cy := 0 to GridSize do
+      For cz := 0 to GridSize do
+        with Grid[cx, cy, cz] do
+        begin
+          Value :=0;
+          for I :=1 to 3 do  // go through all meta balls
+          begin
+            with Metaball[I] do
+               Value := Value + Radius*Radius /((Pos.x-x)*(Pos.x-x) +
+                              (Pos.y-y)*(Pos.y-y) + (Pos.z-z)*(Pos.z-z));
+          end;
+        end;
+
+  // Calculate normals at the grid vertices
+  For cx := 1 to GridSize-1 do
+  begin
+    For cy := 1 to GridSize-1 do
+    begin
+      For cz := 1 to GridSize-1 do
+      begin
+        Grid[cx,cy,cz].Normal.X := Grid[cx-1, cy,
+          cz].Value - Grid[cx+1, cy, cz].Value;
+        Grid[cx,cy,cz].Normal.Y := Grid[cx, cy-1,
+          cz].Value - Grid[cx, cy+1, cz].Value;
+        Grid[cx,cy,cz].Normal.Z := Grid[cx, cy, cz-1].Value -
+          Grid[cx, cy, cz+1].Value;
+//        NormalizeVector(Grid[cx,cy,cz].Normal);
+      end;
+    end;
+  end;
+
+  // Draw the metaballs by drawing the triangle in each cube in the grid
+  glBindTexture(GL_TEXTURE_2D, EnviroTex);
+  glBegin(GL_TRIANGLES);
+    For cx := 0 to GridSize-1 do
+      for cy := 0 to GridSize-1 do
+        for cz := 0 to GridSize-1 do
+          CreateCubeTriangles(Cubes[cx, cy, cz]);
+  glEnd;
+end;
+
+
+{------------------------------------------------------------------}
+{  Initialise OpenGL                                               }
+{------------------------------------------------------------------}
+procedure glInit();
+var
+  cx, cy, cz : Integer;
+begin
+  glClearColor(0.0, 0.0, 0.0, 0.0); 	   // Black Background
+  glShadeModel(GL_SMOOTH);                 // Enables Smooth Color Shading
+  glEnable(GL_DEPTH_TEST);                 // Enable Depth Buffer
+  glDepthFunc(GL_LESS);		           // The Type Of Depth Test To Do
+
+  glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);   //Realy Nice perspective calculations
+
+  glEnable(GL_TEXTURE_2D);                     // Enable Texture Mapping
+  LoadTexture('chrome.bmp', EnviroTex);
+  LoadTexture('background.bmp', background);
+
+  // Set up environment mapping
+  glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+  glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+  glTexGeni(GL_S, GL_SPHERE_MAP, 0);
+  glTexGeni(GL_T, GL_SPHERE_MAP, 0);
+
+  glEnable(GL_NORMALIZE);
+
+  // initialise the metaball size and positions
+  MetaBall[1].Radius :=0.3;
+  MetaBall[1].X :=0;
+  MetaBall[1].Y :=0;
+  MetaBall[1].Z :=0;
+
+  MetaBall[2].Radius :=0.22;
+  MetaBall[2].X :=0;
+  MetaBall[2].Y :=0;
+  MetaBall[2].Z :=0;
+
+  MetaBall[3].Radius :=0.25;
+  MetaBall[3].X :=0;
+  MetaBall[3].Y :=0;
+  MetaBall[3].Z :=0;
+
+  Textured :=TRUE;
+  SmoothShading :=TRUE;
+  WireFrame :=FALSE;
+  GridSize  :=25;
+  InitGrid;
+end;
+```
 
 
 
