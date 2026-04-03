@@ -31,8 +31,16 @@ Each metaball is defined as a function in n dimensions (e.g., for three dimensio
 
 that is, all points larger than the threshold are inside the metaball.
 
+</br>
 
+*  The influence of 2 positive metaballs on each other.
+*  The influence of a negative metaball on a positive metaball by creating an indentation in the positive metaball's surface.
 
+</br>
+
+![influence](https://github.com/user-attachments/assets/6d165ceb-c1ea-415e-a0f1-241d186342d7)
+
+</br>
 
 
 
