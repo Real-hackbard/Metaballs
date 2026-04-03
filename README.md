@@ -43,8 +43,16 @@ that is, all points larger than the threshold are inside the metaball.
 </br>
 
 
+A typical function chosen for metaballs is simply inverse distance, that is, the contribution to the thresholding function falls off asymptotically toward zero as the distance from the centre of the metaball increases.
 
+</br>
 
+![Metaball_contact_sheet](https://github.com/user-attachments/assets/1c01aed3-c7d3-422f-ae12-634ce390d433)
+
+</br>
+
+The interaction between two differently coloured 3D positive metaballs, created in Bryce.
+Note that the two smaller metaballs combine to create one larger object.
 
 
 
