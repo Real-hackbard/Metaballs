@@ -7,7 +7,9 @@ currently being supported with security updates.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
+| 5.1.x   | :white_check_mark: Blur Metaballs |
+| 5.1.x   | :white_check_mark: Glassy Metaballs |
+| 5.1.x   | :white_check_mark: Medal Balls |
 
 ## Reporting a Vulnerability
 
