@@ -55,7 +55,7 @@ The interaction between two differently coloured 3D positive metaballs, created 
 Note that the two smaller metaballs combine to create one larger object.
 
 # Drawing in high resolution (OpenGL):
-````pascal
+```pascal
 procedure glDraw();
 var
   cx, cy, cz : Integer;
@@ -185,11 +185,6 @@ begin
   InitGrid;
 end;
 ```
-
-
-
-
-
 
 
 
