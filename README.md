@@ -10,6 +10,25 @@
 
 </br>
 
+In [computer graphics](https://en.wikipedia.org/wiki/Computer_graphics), metaballs, also known as blobby objects, are organic-looking n-dimensional [isosurfaces](https://en.wikipedia.org/wiki/Isosurface), characterised by their ability to meld together when in close proximity to create single, contiguous objects.
+
+In [solid modelling](https://en.wikipedia.org/wiki/Solid_modeling), [polygon meshes](https://en.wikipedia.org/wiki/Polygon_mesh) are commonly used. In certain instances, however, metaballs are superior. A metaball's "blobby" appearance makes them versatile tools, often used to model organic objects and also to create base meshes for [sculpting](https://en.wikipedia.org/wiki/Digital_sculpting).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
