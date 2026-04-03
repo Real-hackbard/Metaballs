@@ -14,6 +14,8 @@ In [computer graphics](https://en.wikipedia.org/wiki/Computer_graphics), metabal
 
 In [solid modelling](https://en.wikipedia.org/wiki/Solid_modeling), [polygon meshes](https://en.wikipedia.org/wiki/Polygon_mesh) are commonly used. In certain instances, however, metaballs are superior. A metaball's "blobby" appearance makes them versatile tools, often used to model organic objects and also to create base meshes for [sculpting](https://en.wikipedia.org/wiki/Digital_sculpting).
 
+The technique for [rendering](https://en.wikipedia.org/wiki/Rendering_(computer_graphics)) metaballs was invented by Jim Blinn in the early 1980s to model atom interactions for Carl Sagan's 1980 TV series Cosmos. It is also referred to colloquially as the "jelly effect" in the [motion](https://en.wikipedia.org/wiki/Motion_graphic_design) and [UX design](https://en.wikipedia.org/wiki/User_experience_design) community, commonly appearing in UI elements such as navigations and buttons. Metaball behavior corresponds to [mitosis](https://en.wikipedia.org/wiki/Mitosis) in cell biology, where chromosomes generate identical copies of themselves through cell division.
+
 
 
 
