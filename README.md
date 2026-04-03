@@ -27,7 +27,7 @@ The technique for [rendering](https://en.wikipedia.org/wiki/Rendering_(computer_
 # Definition:
 Each metaball is defined as a function in n dimensions (e.g., for three dimensions, ```f(x,y,z)``` three-dimensional metaballs tend to be most common, with two-dimensional implementations popular as well). A thresholding value is also chosen, to define a solid volume. Then,
 
-&sigma; metaball (x,y,z) > thresold
+### &Sigma; metaball (x,y,z) > thresold
 
 that is, all points larger than the threshold are inside the metaball.
 
