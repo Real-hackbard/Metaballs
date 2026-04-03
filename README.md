@@ -16,6 +16,13 @@ In [solid modelling](https://en.wikipedia.org/wiki/Solid_modeling), [polygon mes
 
 The technique for [rendering](https://en.wikipedia.org/wiki/Rendering_(computer_graphics)) metaballs was invented by Jim Blinn in the early 1980s to model atom interactions for Carl Sagan's 1980 TV series Cosmos. It is also referred to colloquially as the "jelly effect" in the [motion](https://en.wikipedia.org/wiki/Motion_graphic_design) and [UX design](https://en.wikipedia.org/wiki/User_experience_design) community, commonly appearing in UI elements such as navigations and buttons. Metaball behavior corresponds to [mitosis](https://en.wikipedia.org/wiki/Mitosis) in cell biology, where chromosomes generate identical copies of themselves through cell division.
 
+# Blender Example:
+
+</br>
+
+![blender-metaballs-1](https://github.com/user-attachments/assets/29e0e1be-351b-4ccc-abcd-136b4dab01ee)
+
+</br>
 
 
 
